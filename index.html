@@ -20,7 +20,8 @@
         img {
             max-width: 80%;           /* Control size of the image */
             height: auto;             /* Maintain aspect ratio */
-            margin-bottom: 30px;      /* Ensure space between image and button */
+            margin-bottom: 30px;  
+	    transition: opacity 0.5s ease, transform 0.5s ease;  
         }
 
         button {
@@ -49,6 +50,7 @@
 	        button.style.padding = "10px 10px";
 		button.style.transition = "padding 0.3s ease";
 		image.src = "./Assets/happygroot.webp"
+		image.style.transform = "scale(0.8)";
 		image.style.transition = "src 1.5s ease";
         });
 	</script>
