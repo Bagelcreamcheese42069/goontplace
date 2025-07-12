@@ -49,15 +49,17 @@
 	    <button id = "zortagene">CLICK IF YOURE NOT GONNA ZORT WITH ME</button>
     </div>
 	    <script>
-		    const button = document.getElementById("zort");
+		    const button1 = document.getElementById("zort");
+		    const button2 = document.getElementById("zortagene");
 		    const image = document.getElementById("zortymage");
 
 
-        button.addEventListener("click", function() {
-            button.style.backgroundColor = "green";
-		button.textContent = "YOU ZORTED WITH ME!";
-	        button.style.padding = "10px 10px";
-		button.style.transition = "padding 0.3s ease";
+        button1.addEventListener("click", function() {
+            button1.style.backgroundColor = "green";
+		button1.textContent = "YOU ZORTED WITH ME!";
+	        button1.style.padding = "10px 10px";
+		button1.style.transition = "padding 0.3s ease";
+		button2.style.display = "none";
 		image.style.opacity = 0;
 		image.style.transform = "scale(0.6)";
 		image.style.margin = "10px";
