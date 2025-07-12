@@ -16,6 +16,14 @@
             height: 100vh;            /* Full viewport height */
             text-align: center;       /* Center text */
         }
+.buttons {
+	 display: flex;
+            justify-content: center;  /* Center items vertically */
+            align-items: center;      /* Center items horizontally */
+            height: 100vh;            /* Full viewport height */
+            text-align: center;       /* Center text */
+        }
+	
 
         img {
             max-width: 70%;           /* Control size of the image */
@@ -32,11 +40,12 @@
     </style>
 </head>
 <body>
-
+    <div class="buttons>
+	    <button id = "zort">CLICK IF YOURE GONNA ZORT WITH ME</button><button id = "zortagene">CLICK IF YOURE NOT GONNA ZORT WITH ME</button>
+    </div>
     <div class="container">
 	<h1>I AM ZORTING IT</h1>
         <img id = "zortymage" src="./Assets/babygoont.webp" alt="Sample Image">
-        <button id = "zort">CLICK IF YOURE GONNA ZORT WITH ME</button><button id = "zortagene">CLICK IF YOURE NOT GONNA ZORT WITH ME</button>
 
 	    <script>
 		    const button = document.getElementById("zort");
