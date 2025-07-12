@@ -8,25 +8,26 @@
 </head>
 <body>
 <style>
- .container {
+container {
             display: flex;
-            flex-direction: column;   
-            justify-content: center;  
-            height: 100vh;            
-            text-align: center;       
+            flex-direction: column;   /* Stack elements vertically */
+            justify-content: center;  /* Center items vertically */
+            align-items: center;      /* Center items horizontally */
+            height: 100vh;            /* Full viewport height */
+            text-align: center;       /* Center text */
         }
 
         img {
-            max-width: 60%;           
-            height: auto;            
-            margin-bottom: 30px;    
+            max-width: 60%;           /* Control size of the image */
+            height: auto;             /* Maintain aspect ratio */
+            margin-bottom: 30px;      /* Ensure space between image and button */
         }
 
         button {
-            padding: 15px 30px;
-            font-size: 16px;
+            padding: 15px 30px;       /* Make button bigger */
+            font-size: 18px;          /* Adjust text size */
             cursor: pointer;
-            margin-top: 20px;         
+            margin-top: 20px;         /* Optional: more space between button and image */
         }
     </style>
 </head>
