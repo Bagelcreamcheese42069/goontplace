@@ -72,7 +72,13 @@
 			  }, 500);  // Delay for the fade-out to complete
                 }, 500);  // Wait for the fade-out and scale-down to complete
         });
-        button2.addEventListner("click", function() {
+	</script>
+	<script>
+		const button1 = document.getElementById("zort");
+		    const button2 = document.getElementById("zortagene");
+		    const image = document.getElementById("zortymage");
+		
+	button2.addEventListner("click", function() {
 		button2.style.backgroundColor = "green";
 		button2.textContent = "You didn't zort with me... :(";
 	        button2.style.padding = "10px 10px";
