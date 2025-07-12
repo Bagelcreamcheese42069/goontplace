@@ -72,6 +72,24 @@
 			  }, 500);  // Delay for the fade-out to complete
                 }, 500);  // Wait for the fade-out and scale-down to complete
         });
+        button2.addEventListner("click", function() {
+		button2.style.backgroundColor = "green";
+		button2.textContent = "You didn't zort with me... :(";
+	        button2.style.padding = "10px 10px";
+		button2.style.transition = "padding 0.3s ease";
+		button1.style.display = "none";
+		image.style.opacity = 0;
+		image.style.transform = "scale(0.6)";
+		image.style.margin = "10px";
+		image.style.padding = "10px";
+		image.style.height = "70%";
+		setTimeout(function() {
+			image.src = "./Assets/sadgroot.webp";
+			setTimeout(function() {
+				image.style.opacity = 1;
+			  }, 500);  // Delay for the fade-out to complete
+                }, 500);  // Wait for the fade-out and scale-down to complete
+        });
 	</script>
 
 </body>
