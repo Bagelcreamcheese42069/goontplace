@@ -1,12 +1,3 @@
-.center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: lightblue;  /* For debugging */
-}
-
-.center div {
-    background-color: coral;   /* For debugging */
-    padding: 20px;
+body {
+    text-align: center;
 }
