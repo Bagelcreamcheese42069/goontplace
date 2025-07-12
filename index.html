@@ -7,10 +7,36 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<div class="center">
-		<h1>I AM ZORTING IT</h1>
-		<img src = ./Assets/babygoont.webp alt = "babygoont" />
-	        <button>Zorting it so hard</button>
-	</div>
+<style>
+ .container {
+            display: flex;
+            flex-direction: column;   /* Stack image and button vertically */
+            justify-content: center;  /* Center items vertically */
+            align-items: center;      /* Center items horizontally */
+            height: 100vh;            /* Full viewport height */
+            text-align: center;       /* Center text inside the button */
+        }
+
+        img {
+            max-width: 80%;           /* Ensure image doesn't take up the whole width */
+            height: auto;             /* Maintain aspect ratio */
+            margin-bottom: 20px;      /* Add space between image and button */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;         /* Optional: adds extra space between button and image */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="https://via.placeholder.com/400" alt="Sample Image">
+        <button>Click Me</button>
+    </div>
+
 </body>
 </html>
