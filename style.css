@@ -1,5 +1,12 @@
 .center {
-    display: grid;               /* Use grid layout */
-    place-items: center;         /* Shortcut for centering both horizontally and vertically */
-    height: 100vh;               /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: lightblue;  /* For debugging */
+}
+
+.center div {
+    background-color: coral;   /* For debugging */
+    padding: 20px;
 }
