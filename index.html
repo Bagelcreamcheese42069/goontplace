@@ -35,17 +35,21 @@
 
     <div class="container">
 	<h1>I AM ZORTING IT</h1>
-        <img src="./Assets/babygoont.webp" alt="Sample Image">
+        <img id = "zortymage" src="./Assets/babygoont.webp" alt="Sample Image">
         <button id = "zort">CLICK IF YOURE GONNA ZORT WITH ME</button>
 
 	    <script>
 		    const button = document.getElementById("zort");
+		    const image = document.getElementById("zortymage");
+
 
         button.addEventListener("click", function() {
             button.style.backgroundColor = "green";
 		button.textContent = "YOU ZORTED WITH ME!";
 	        button.style.padding = "10px 10px";
 		button.style.transition = "padding 0.3s ease";
+		image.src = "./Assets/happygroot.webp"
+		image.style.transition = "src 1.5s ease";
         });
 	</script>
     </div>
