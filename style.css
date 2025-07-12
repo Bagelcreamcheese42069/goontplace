@@ -1,6 +1,6 @@
 button {
     position: fixed;
-    top: 500px;
+    top: 1000px;
     transition:  padding 1.5s ease, background-color 0.7s ease, color 0.7s ease, textContent 0.7s ease;
 }
 
