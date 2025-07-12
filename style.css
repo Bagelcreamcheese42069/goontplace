@@ -1,4 +1,4 @@
 button {
-    transition: background-color 0.7s ease, color 0.7s ease, textContent 0.7s ease;
+    transition: background-color 0.7s ease, color 0.7s ease, textContent 0.7s ease, padding 0.7s ease;
 }
 
