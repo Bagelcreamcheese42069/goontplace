@@ -13,37 +13,6 @@
 			border-radius: 12px;
 			box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 		}
-		.zortment-box h2 {
-			margin-top: 40px;
-			margin-bottom: 40px;
-		}
-		.zortment-form textarea {
-			width: 100%;
-			height: 100px;
-			padding: 0.5rem;
-			border-radius: 8px;
-			border: 1px solid #ccc;
-			resize: none;
-			font-size: 1rem;
-		}
-		.zortment-form button {
-			margin-top: 0.5rem;
-			padding: 0.5rem 1rem;
-			background: #4caf50;
-			color: white;
-			border: none;
-			border-radius: 8px;
-			cursor: pointer;
-		}
-		.zortments {
-			margin-top: 1.5rem;
-		}
-		.zortment {
-			background: #eee;
-			padding: 0.75rem;
-			margin-bottom: 0.5rem;
-			border-radius: 8px;
-		}
 		.container {
 			display: flex;
 			flex-direction: column;  
@@ -78,63 +47,11 @@
 	</div>
 
 	<div class="buttons">
-		<button id="zort">CLICK IF YOURE GONNA ZORT WITH ME</button>
+		<button id="zort">CLICK IF YOU'RE GONNA ZORT WITH ME</button>
 		<button id="zortagene">CLICK IF YOU'RE NOT GONNA ZORT WITH ME</button>
 	</div>
 
-	<div class="zortment-box">
-		<h2>PLEASE LEAVE A ZORTMENT</h2>
-	</div>
-
-	<div class="zortment-form">
-		<textarea id="zortmentInput" placeholder="Type zortments"></textarea>
-		<button onclick="addZortment()">Confirm Zortment</button>
-		<div class="zortments" id="zortmentsList"></div>
-	</div>
-
-	<script type="module">
-		import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-		import { getFirestore, collection, addDoc, onSnapshot, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-		// ==== REPLACE THIS WITH YOUR FIREBASE CONFIG ====
-const firebaseConfig = {
-    apiKey: "AIzaSyDsMpuywELpMVRs_hFD0tgR10hBvd0rSN8",
-    authDomain: "goont-a9b23.firebaseapp.com",
-    projectId: "goont-a9b23",
-    storageBucket: "goont-a9b23.appspot.com",
-    messagingSenderId: "860590872208",
-    appId: "1:860590872208:web:df2c930a2a662f025d2a15",
-    measurementId: "G-MB4PB3YCYV"
-  };
-
-
-		const app = initializeApp(firebaseConfig);
-		const db = getFirestore(app);
-
-		const zortmentsList = document.getElementById("zortmentsList");
-		const q = query(collection(db, "zortments"), orderBy("createdAt", "desc"));
-
-		onSnapshot(q, (snapshot) => {
-			zortmentsList.innerHTML = "";
-			snapshot.forEach(doc => {
-				const z = document.createElement("div");
-				z.className = "zortment";
-				z.textContent = doc.data().text;
-				zortmentsList.appendChild(z);
-			});
-		});
-
-		window.addZortment = async function () {
-			const input = document.getElementById("zortmentInput");
-			const text = input.value.trim();
-			if (!text) return;
-			await addDoc(collection(db, "zortments"), {
-				text,
-				createdAt: serverTimestamp()
-			});
-			input.value = "";
-		};
-
+	<script>
 		const button1 = document.getElementById("zort");
 		const button2 = document.getElementById("zortagene");
 		const image = document.getElementById("zortymage");
