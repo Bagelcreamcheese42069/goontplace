@@ -8,6 +8,43 @@
 </head>
 <body>
 <style>
+.zortment-box {
+	max-width: 600px;
+	margin: auto;
+	background: lightgray
+	padding: 1.5rem;
+	border-radius: 12px;
+	box-shadow: 0 4px 10px rgba(0,0,0,0.1)
+}
+.zortment-box h2 {
+	margin-top: 10px;
+}
+.zortment-form textarea {
+	width: 100%;
+	height: 100px;
+	padding: 0.5rem;
+	border-radius: 8px;
+	border: 1px solid #ccc;
+	resize: none;
+	font-sizee: 1rem;
+}
+.zortment-form button {
+	mergin-top: 0.5rem;
+	padding: 0.5rem 1rem;
+	background: #4caf50;
+	color: white;
+	border: none;
+	border-radius: 8px;
+	cursor: pointers
+}
+.zortments {
+	margin-top: 1.5rem;
+}
+.zorment {
+	background: #eee;
+	padding: 0.75rem;
+	margin-bottom: 0.5rem;
+	border-radius: 8px;
 .container {
             display: flex;
             flex-direction: column;  
@@ -39,7 +76,14 @@
     </style>
 </head>
 <body>
-
+    <div class = "zortment-box">
+	    <h2>PLEASE LEAVE A ZORTMENT</h2>
+    </div>
+    <div class="zortment-form">
+	    <textarea id = "zortmentInput" placeholder = "Type zortments"></textarea>
+	    <button onclick="addZortment()">Confirm Zortment</button>
+	   <div class="zortments" id="zortmentsList"></div>
+    </div>
     <div class="container">
 	<h1>I AM ZORTING IT</h1>
         <img id = "zortymage" src="./Assets/babygoont.webp" alt="Sample Image">
@@ -52,7 +96,34 @@
 		    const button1 = document.getElementById("zort");
 		    const button2 = document.getElementById("zortagene");
 		    const image = document.getElementById("zortymage");
+        window.onload = function () {
+		const saved = localStorage.getItem("zortments");
+		if (saved) {
+			const zortments = JSON.parse(saved);
+			zortments.forEach(text => createZortmentElement(text));
+		}
+	};
+	function addZortment() {
+		const input = document.getElementById("zortmentInput");
+		const text = input.value.trim();
+		if (text === "") return;
 
+		createZortmentElement(text);
+		saveZortment(text);
+		input.value = "";
+	}
+	function createZortmentElement(text) {
+		const zortmentsList = document.getElementById("zortmentsList);
+		const zortment = document.createElement("div");
+		zortment.className = "zortment";
+		zortment.textContent = text;
+		zortmentList.prepend(zortment);
+	}
+	function saveZortment(text) {
+		let zortments = JSON.parse(localStorage.getItem("zortments")) || [];
+		zortments.unshift(text);
+		localStorage.setItem("zortments", JSON.stringify(zortments));
+	}
 
         button1.addEventListener("click", function() {
             button1.style.backgroundColor = "green";
