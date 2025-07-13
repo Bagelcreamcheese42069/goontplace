@@ -4,7 +4,6 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>GOONT</title>
-	<link rel="stylesheet" href="style.css" />
 	<style>
 		.zortment-box {
 			max-width: 600px;
@@ -80,7 +79,7 @@
 
 	<div class="buttons">
 		<button id="zort">CLICK IF YOURE GONNA ZORT WITH ME</button>
-		<button id="zortagene">CLICK IF YOURE NOT GONNA ZORT WITH ME</button>
+		<button id="zortagene">CLICK IF YOU'RE NOT GONNA ZORT WITH ME</button>
 	</div>
 
 	<div class="zortment-box">
@@ -94,27 +93,26 @@
 	</div>
 
 	<script type="module">
-		import { initializeApp } from "firebase/app";
-                import { getAnalytics } from "firebase/analytics";
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+		import { getFirestore, collection, addDoc, onSnapshot, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 		// ==== REPLACE THIS WITH YOUR FIREBASE CONFIG ====
 		const firebaseConfig = {
-                     apiKey: "AIzaSyDsMpuywELpMVRs_hFD0tgR10hBvd0rSN8",
-                     authDomain: "goont-a9b23.firebaseapp.com",
-                     projectId: "goont-a9b23",
-                     storageBucket: "goont-a9b23.firebasestorage.app",
-                     messagingSenderId: "860590872208",
-                     appId: "1:860590872208:web:df2c930a2a662f025d2a15",
-                     measurementId: "G-MB4PB3YCYV"
-                };
+			apiKey: "AIzaSyDsMpuywELpMVRs_hFD0tgR10hBvd0rSN8",
+			authDomain: "goont-a9b23.firebaseapp.com",
+			projectId: "goont-a9b23",
+			storageBucket: "goont-a9b23.appspot.com",
+			messagingSenderId: "860590872208",
+			appId: "1:860590872208:web:df2c930a2a662f025d2a15",
+			measurementId: "G-MB4PB3YCYV"
+		};
 
-		// Initialize Firebase
 		const app = initializeApp(firebaseConfig);
 		const db = getFirestore(app);
 
-		// Real-time display of zortments
 		const zortmentsList = document.getElementById("zortmentsList");
 		const q = query(collection(db, "zortments"), orderBy("createdAt", "desc"));
+
 		onSnapshot(q, (snapshot) => {
 			zortmentsList.innerHTML = "";
 			snapshot.forEach(doc => {
@@ -125,8 +123,7 @@
 			});
 		});
 
-		// Add a new zortment to Firestore
-		window.addZortment = async function() {
+		window.addZortment = async function () {
 			const input = document.getElementById("zortmentInput");
 			const text = input.value.trim();
 			if (!text) return;
@@ -137,12 +134,11 @@
 			input.value = "";
 		};
 
-		// Your existing buttons logic (unchanged)
 		const button1 = document.getElementById("zort");
 		const button2 = document.getElementById("zortagene");
 		const image = document.getElementById("zortymage");
 
-		button1.addEventListener("click", function() {
+		button1.addEventListener("click", function () {
 			button1.style.backgroundColor = "green";
 			button1.textContent = "YOU ZORTED WITH ME!";
 			button1.style.padding = "10px 10px";
@@ -153,15 +149,15 @@
 			image.style.margin = "10px";
 			image.style.padding = "10px";
 			image.style.height = "70%";
-			setTimeout(function() {
+			setTimeout(function () {
 				image.src = "./Assets/happygroot.webp";
-				setTimeout(function() {
+				setTimeout(function () {
 					image.style.opacity = 1;
 				}, 500);
 			}, 500);
 		});
 
-		button2.addEventListener("click", function() {
+		button2.addEventListener("click", function () {
 			button2.style.backgroundColor = "green";
 			button2.textContent = "You didn't zort with me... :(";
 			button2.style.padding = "10px 10px";
@@ -172,9 +168,9 @@
 			image.style.margin = "5";
 			image.style.padding = "5";
 			image.style.maxHeight = "800px";
-			setTimeout(function() {
+			setTimeout(function () {
 				image.src = "./Assets/sadgroot.webp";
-				setTimeout(function() {
+				setTimeout(function () {
 					image.style.opacity = 1;
 				}, 500);
 			}, 500);
