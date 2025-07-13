@@ -1,170 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial scale=1.0">
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>GOONT</title>
-	<link rel="stylesheet" href="style.css">
-</head>
-<body>
-<style>
-.zortment-box {
-	max-width: 600px;
-	margin: auto;
-	background: lightgray;
-	padding: 1.5rem;
-	border-radius: 12px;
-	box-shadow: 0 4px 10px rgba(0,0,0,0.1)
-}
-.zortment-box h2 {
-	margin-top: 40px;
-	margin-bottom: 40px;
-}
-.zortment-form textarea {
-	width: 100%;
-	height: 100px;
-	padding: 0.5rem;
-	border-radius: 8px;
-	border: 1px solid #ccc;
-	resize: none;
-	font-size: 1rem;
-}
-.zortment-form button {
-	margin-top: 0.5rem;
-	padding: 0.5rem 1rem;
-	background: #4caf50;
-	color: white;
-	border: none;
-	border-radius: 8px;
-	cursor: pointer;
-}
-.zortments {
-	margin-top: 1.5rem;
-}
-.zortment {
-	background: #eee;
-	padding: 0.75rem;
-	margin-bottom: 0.5rem;
-	border-radius: 8px;
-}
-.container {
-            display: flex;
-            flex-direction: column;  
-            align-items: center;        
-            text-align: center;      
-        }
-.buttons {
-	    display: flex;
-            justify-content: center;  
-            align-items: center;     
-            text-align: center;       
-        }
-	
-
-        img {
-            max-width: 70%;        
-            height: auto;           
-            margin-bottom: 10px;  
-        }
-
-        button {
-            padding: 20px 40px;      
-            font-size: 18px;        
-            cursor: pointer;
-            margin-top: 20px;   
-	    margin-right: 20px;
-	    margin-left: 20px;
-        }
-    </style>
-</head>
-<body>
-    
-    <div class="container">
-	<h1>I AM ZORTING IT</h1>
-        <img id = "zortymage" src="./Assets/babygoont.webp" alt="Sample Image">
-    </div>
-    <div class="buttons">
-	    <button id = "zort">CLICK IF YOURE GONNA ZORT WITH ME</button>
-	    <button id = "zortagene">CLICK IF YOURE NOT GONNA ZORT WITH ME</button>
-    </div>
-    <div class = "zortment-box">
-	    <h2>PLEASE LEAVE A ZORTMENT</h2>
-    </div>
-    <div class="zortment-form">
-	    <textarea id = "zortmentInput" placeholder = "Type zortments"></textarea>
-	    <button onclick="addZortment()">Confirm Zortment</button>
-	   <div class="zortments" id="zortmentsList"></div>
-    </div>
-	    <script>
-		    const button1 = document.getElementById("zort");
-		    const button2 = document.getElementById("zortagene");
-		    const image = document.getElementById("zortymage");
-        window.onload = function () {
-		const saved = localStorage.getItem("zortments");
-		if (saved) {
-			const zortments = JSON.parse(saved);
-			zortments.forEach(text => createZortmentElement(text));
+	<link rel="stylesheet" href="style.css" />
+	<style>
+		.zortment-box {
+			max-width: 600px;
+			margin: auto;
+			background: lightgray;
+			padding: 1.5rem;
+			border-radius: 12px;
+			box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 		}
-	};
-	function addZortment() {
-		const input = document.getElementById("zortmentInput");
-		const text = input.value.trim();
-		if (text === "") return;
+		.zortment-box h2 {
+			margin-top: 40px;
+			margin-bottom: 40px;
+		}
+		.zortment-form textarea {
+			width: 100%;
+			height: 100px;
+			padding: 0.5rem;
+			border-radius: 8px;
+			border: 1px solid #ccc;
+			resize: none;
+			font-size: 1rem;
+		}
+		.zortment-form button {
+			margin-top: 0.5rem;
+			padding: 0.5rem 1rem;
+			background: #4caf50;
+			color: white;
+			border: none;
+			border-radius: 8px;
+			cursor: pointer;
+		}
+		.zortments {
+			margin-top: 1.5rem;
+		}
+		.zortment {
+			background: #eee;
+			padding: 0.75rem;
+			margin-bottom: 0.5rem;
+			border-radius: 8px;
+		}
+		.container {
+			display: flex;
+			flex-direction: column;  
+			align-items: center;        
+			text-align: center;      
+		}
+		.buttons {
+			display: flex;
+			justify-content: center;  
+			align-items: center;     
+			text-align: center;       
+		}
+		img {
+			max-width: 70%;        
+			height: auto;           
+			margin-bottom: 10px;  
+		}
+		button {
+			padding: 20px 40px;      
+			font-size: 18px;        
+			cursor: pointer;
+			margin-top: 20px;   
+			margin-right: 20px;
+			margin-left: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>I AM ZORTING IT</h1>
+		<img id="zortymage" src="./Assets/babygoont.webp" alt="Sample Image" />
+	</div>
 
-		createZortmentElement(text);
-		saveZortment(text);
-		input.value = "";
-	}
-	function createZortmentElement(text) {
+	<div class="buttons">
+		<button id="zort">CLICK IF YOURE GONNA ZORT WITH ME</button>
+		<button id="zortagene">CLICK IF YOURE NOT GONNA ZORT WITH ME</button>
+	</div>
+
+	<div class="zortment-box">
+		<h2>PLEASE LEAVE A ZORTMENT</h2>
+	</div>
+
+	<div class="zortment-form">
+		<textarea id="zortmentInput" placeholder="Type zortments"></textarea>
+		<button onclick="addZortment()">Confirm Zortment</button>
+		<div class="zortments" id="zortmentsList"></div>
+	</div>
+
+	<script type="module">
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+		import { getFirestore, collection, addDoc, onSnapshot, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+		// ==== REPLACE THIS WITH YOUR FIREBASE CONFIG ====
+		const firebaseConfig = {
+                     apiKey: "AIzaSyDsMpuywELpMVRs_hFD0tgR10hBvd0rSN8",
+                     authDomain: "goont-a9b23.firebaseapp.com",
+                     projectId: "goont-a9b23",
+                     storageBucket: "goont-a9b23.firebasestorage.app",
+                     messagingSenderId: "860590872208",
+                     appId: "1:860590872208:web:df2c930a2a662f025d2a15",
+                     measurementId: "G-MB4PB3YCYV"
+                };
+
+		// Initialize Firebase
+		const app = initializeApp(firebaseConfig);
+		const db = getFirestore(app);
+
+		// Real-time display of zortments
 		const zortmentsList = document.getElementById("zortmentsList");
-		const zortment = document.createElement("div");
-		zortment.className = "zortment";
-		zortment.textContent = text;
-		zortmentsList.prepend(zortment);
-	}
-	function saveZortment(text) {
-		let zortments = JSON.parse(localStorage.getItem("zortments")) || [];
-		zortments.unshift(text);
-		localStorage.setItem("zortments", JSON.stringify(zortments));
-	}
+		const q = query(collection(db, "zortments"), orderBy("createdAt", "desc"));
+		onSnapshot(q, (snapshot) => {
+			zortmentsList.innerHTML = "";
+			snapshot.forEach(doc => {
+				const z = document.createElement("div");
+				z.className = "zortment";
+				z.textContent = doc.data().text;
+				zortmentsList.appendChild(z);
+			});
+		});
 
-        button1.addEventListener("click", function() {
-            button1.style.backgroundColor = "green";
-		button1.textContent = "YOU ZORTED WITH ME!";
-	        button1.style.padding = "10px 10px";
-		button1.style.transition = "padding 0.3s ease";
-		button2.style.display = "none";
-		image.style.opacity = 0;
-		image.style.transform = "scale(0.6)";
-		image.style.margin = "10px";
-		image.style.padding = "10px";
-		image.style.height = "70%";
-		setTimeout(function() {
-			image.src = "./Assets/happygroot.webp";
+		// Add a new zortment to Firestore
+		window.addZortment = async function() {
+			const input = document.getElementById("zortmentInput");
+			const text = input.value.trim();
+			if (!text) return;
+			await addDoc(collection(db, "zortments"), {
+				text,
+				createdAt: serverTimestamp()
+			});
+			input.value = "";
+		};
+
+		// Your existing buttons logic (unchanged)
+		const button1 = document.getElementById("zort");
+		const button2 = document.getElementById("zortagene");
+		const image = document.getElementById("zortymage");
+
+		button1.addEventListener("click", function() {
+			button1.style.backgroundColor = "green";
+			button1.textContent = "YOU ZORTED WITH ME!";
+			button1.style.padding = "10px 10px";
+			button1.style.transition = "padding 0.3s ease";
+			button2.style.display = "none";
+			image.style.opacity = 0;
+			image.style.transform = "scale(0.6)";
+			image.style.margin = "10px";
+			image.style.padding = "10px";
+			image.style.height = "70%";
 			setTimeout(function() {
-				image.style.opacity = 1;
-			  }, 500);  // Delay for the fade-out to complete
-                }, 500);  // Wait for the fade-out and scale-down to complete
-        });
-	button2.addEventListener("click", function() {
-		button2.style.backgroundColor = "green";
-		button2.textContent = "You didn't zort with me... :(";
-	        button2.style.padding = "10px 10px";
-		button2.style.transition = "padding 0.3s ease";
-		button1.style.display = "none";
-		image.style.opacity = 0;
-		image.style.transform = "scale(0.4)";
-		image.style.margin = "5";
-                image.style.padding = "5";
-                image.style.maxHeight = "800px";
-		setTimeout(function() {
-			image.src = "./Assets/sadgroot.webp";
+				image.src = "./Assets/happygroot.webp";
+				setTimeout(function() {
+					image.style.opacity = 1;
+				}, 500);
+			}, 500);
+		});
+
+		button2.addEventListener("click", function() {
+			button2.style.backgroundColor = "green";
+			button2.textContent = "You didn't zort with me... :(";
+			button2.style.padding = "10px 10px";
+			button2.style.transition = "padding 0.3s ease";
+			button1.style.display = "none";
+			image.style.opacity = 0;
+			image.style.transform = "scale(0.4)";
+			image.style.margin = "5";
+			image.style.padding = "5";
+			image.style.maxHeight = "800px";
 			setTimeout(function() {
-				image.style.opacity = 1;
-			  }, 500);  // Delay for the fade-out to complete
-                }, 500);  // Wait for the fade-out and scale-down to complete
-        });
+				image.src = "./Assets/sadgroot.webp";
+				setTimeout(function() {
+					image.style.opacity = 1;
+				}, 500);
+			}, 500);
+		});
 	</script>
-
 </body>
 </html>
